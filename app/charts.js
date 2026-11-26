@@ -62,8 +62,12 @@ export function lineChart(points, options = {}) {
   out += `<path d="${path}" class="line" stroke="${options.color || '#bc002d'}" fill="none"/>`;
   for (let i = 0; i < points.length; i++) {
     const p = points[i];
+    // Keep the first and last value labels inside the plot instead of
+    // letting them run over the y-axis or the right edge.
+    const anchor = i === 0 ? 'start' : i === points.length - 1 ? 'end' : 'middle';
+    const labelX = i === 0 ? xAt(i) + 2 : i === points.length - 1 ? xAt(i) - 2 : xAt(i);
     out += `<circle cx="${xAt(i).toFixed(1)}" cy="${yAt(p.y).toFixed(1)}" r="4" class="dot" fill="${options.color || '#bc002d'}"/>`;
-    out += `<text x="${xAt(i).toFixed(1)}" y="${(yAt(p.y) - 10).toFixed(1)}" class="value" text-anchor="middle">${esc(fmt(p.y))}</text>`;
+    out += `<text x="${labelX.toFixed(1)}" y="${(yAt(p.y) - 10).toFixed(1)}" class="value" text-anchor="${anchor}">${esc(fmt(p.y))}</text>`;
     if (i % 2 === 0 || points.length <= 8) {
       out += `<text x="${xAt(i).toFixed(1)}" y="${height - 10}" class="axis" text-anchor="middle">${esc(p.x)}</text>`;
     }

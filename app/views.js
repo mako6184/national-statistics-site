@@ -49,6 +49,22 @@ export function homeView() {
     </div>
     <p class="search-hint" id="search-count"></p>
   </section>
+  <section class="panel">
+    <h2>Population: up, then down</h2>
+    <p>Japan’s population grew from 84 million in 1950 to a peak of 128.1 million in 2008,
+    then turned down. The chart below is the story of the whole site in one line.</p>
+    ${lineChart(POPULATION_SERIES.map((p) => ({ x: p.year, y: p.value })), {
+      label: 'Total population of Japan, millions, 1950 to 2024',
+      format: (v) => v.toFixed(1),
+      color: '#bc002d',
+      height: 240,
+    })}
+    ${sourceLine(POPULATION_SERIES_SOURCE + '. Population in millions.')}
+    <p><a href="#/population">Explore the population in detail →</a></p>
+  </section>
+  <section class="cards" id="indicator-cards" aria-label="Headline indicators">
+    ${cards}
+  </section>
   <section class="cards" id="indicator-cards" aria-label="Headline indicators">
     ${cards}
   </section>
