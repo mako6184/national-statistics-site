@@ -1,0 +1,189 @@
+/* Japan in Numbers — an original design.
+   Palette: deep indigo ink, vermilion red (the rising sun), warm paper white.
+   System fonts only, so the site needs no font download. */
+
+:root {
+  --ink: #1f3a5f;
+  --ink-soft: #33517a;
+  --red: #bc002d;
+  --red-soft: #fbe9ec;
+  --paper: #faf7f2;
+  --surface: #ffffff;
+  --line: #d9d2c7;
+  --muted: #5c6675;
+  --blue-soft: #e8eef5;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; }
+
+/* ---- header ---- */
+.site-header {
+  background: var(--ink);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .18);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 56px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+.brand-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--red); color: #fff; font-size: 19px; font-weight: 700;
+}
+.brand-text { font-size: 19px; font-weight: 700; letter-spacing: .2px; white-space: nowrap; }
+#nav { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; }
+#nav a {
+  color: #cfd9e6; text-decoration: none; padding: 7px 11px; border-radius: 8px;
+  font-size: 14.5px; white-space: nowrap;
+}
+#nav a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+#nav a.active { background: var(--red); color: #fff; }
+
+/* ---- main ---- */
+main { padding: 28px 20px 40px; }
+h1 { font-size: 32px; line-height: 1.15; margin: 4px 0 10px; color: var(--ink); }
+h2 { font-size: 20px; margin: 0 0 10px; color: var(--ink); }
+h3 { font-size: 16px; margin: 0 0 6px; color: var(--ink); }
+.lede { font-size: 18px; color: #333; max-width: 760px; }
+.kicker { color: var(--red); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 12.5px; margin: 0 0 6px; }
+.source { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+a { color: var(--ink); }
+
+/* ---- hero + search ---- */
+.hero { padding: 10px 0 6px; }
+.hero h1 { font-size: 42px; margin: 0 0 12px; }
+.search-row { display: flex; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.search-row label { font-weight: 700; color: var(--ink); }
+.search-row input {
+  flex: 1; min-width: 220px; max-width: 460px;
+  padding: 11px 14px; font-size: 16px;
+  border: 2px solid var(--ink); border-radius: 10px; background: #fff;
+}
+.search-row input:focus { outline: 3px solid rgba(188, 0, 45, .35); border-color: var(--red); }
+.search-hint { min-height: 20px; color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+
+/* ---- indicator cards ---- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+.card {
+  display: block; background: var(--surface); border: 1px solid var(--line);
+  border-left: 5px solid var(--red); border-radius: var(--radius);
+  padding: 16px 18px; text-decoration: none; color: inherit;
+  box-shadow: 0 1px 4px rgba(31, 58, 95, .08);
+}
+.card:hover { border-color: var(--ink); box-shadow: 0 3px 12px rgba(31, 58, 95, .16); }
+.card-label { display: block; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.card-value { display: block; font-size: 34px; font-weight: 800; color: var(--ink); line-height: 1.2; margin: 4px 0; }
+.card-detail { display: block; font-size: 14.5px; color: #333; }
+.card-source { display: block; font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+
+/* ---- panels, stats, tables ---- */
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px; margin: 18px 0; box-shadow: 0 1px 4px rgba(31, 58, 95, .06);
+}
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.panel-head h2 { margin: 0; }
+.range-label { font-size: 14px; color: var(--muted); font-weight: 600; }
+.range-label select { font-size: 15px; padding: 6px 8px; border-radius: 8px; border: 1.5px solid var(--ink); background: #fff; margin-left: 4px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.split > div { min-width: 0; }
+
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.stat-label { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.stat-value { display: block; font-size: 30px; font-weight: 800; color: var(--ink); margin: 4px 0; }
+.stat-detail { display: block; font-size: 14px; }
+.stat-source { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 6px; }
+th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+th { color: var(--ink); font-size: 13.5px; text-transform: uppercase; letter-spacing: .03em; }
+td { font-variant-numeric: tabular-nums; }
+tr.japan-row td { background: var(--red-soft); font-weight: 700; }
+table[data-sortable] th { cursor: pointer; user-select: none; }
+table[data-sortable] th:hover { color: var(--red); }
+table[data-sortable] th::after { content: " ↕"; color: #9aa5b5; font-size: 12px; }
+table[data-sortable] th.sorted-asc::after { content: " ↑"; color: var(--red); }
+table[data-sortable] th.sorted-desc::after { content: " ↓"; color: var(--red); }
+
+/* ---- charts ---- */
+svg { max-width: 100%; height: auto; display: block; }
+.grid { stroke: #e3ddd2; stroke-width: 1; }
+.axis-line { stroke: #b9b2a4; stroke-width: 1; }
+.axis { fill: var(--muted); font-size: 12px; font-family: inherit; }
+.value { fill: #222; font-size: 12.5px; font-weight: 600; font-family: inherit; }
+.line { stroke-width: 2.5; }
+.dot { stroke: #fff; stroke-width: 1.5; }
+.hbar-label { fill: #222; font-size: 13px; font-family: inherit; }
+.donut-big { fill: var(--ink); font-size: 26px; font-weight: 800; font-family: inherit; }
+.donut-small { fill: var(--muted); font-size: 13px; font-family: inherit; }
+.legend { list-style: none; padding: 0; margin: 10px 0 0; font-size: 14.5px; }
+.legend li { margin: 4px 0; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+
+/* ---- facts, notes, links ---- */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.fact { background: var(--blue-soft); border-radius: 10px; padding: 14px 16px; }
+.fact-value { display: block; font-size: 26px; font-weight: 800; color: var(--ink); }
+.fact-label { display: block; font-weight: 700; color: var(--ink); margin-top: 2px; }
+.fact-detail { display: block; font-size: 14.5px; margin-top: 4px; }
+.fact-source { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.notes { margin: 6px 0; padding-left: 20px; }
+.notes li { margin: 7px 0; }
+.quick-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.quick-links a {
+  background: var(--ink); color: #fff; text-decoration: none; font-weight: 600;
+  padding: 9px 14px; border-radius: 9px; font-size: 14.5px;
+}
+.quick-links a:hover { background: var(--red); }
+
+/* ---- footer ---- */
+.site-footer { background: var(--ink); color: #cfd9e6; font-size: 14px; padding: 26px 0 34px; }
+.site-footer p { margin: 8px 0; }
+.site-footer a { color: #fff; }
+
+/* ---- phone ---- */
+@media (max-width: 760px) {
+  body { font-size: 15px; }
+  .hero h1 { font-size: 32px; }
+  h1 { font-size: 26px; }
+  .lede { font-size: 16.5px; }
+  .cards { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; gap: 20px; }
+  .facts { grid-template-columns: 1fr; }
+  .brand-text { font-size: 17px; }
+  #nav { margin-left: 0; }
+  #nav a { padding: 6px 8px; font-size: 13.5px; }
+  .panel { padding: 16px; }
+  table { font-size: 13.5px; }
+  th, td { padding: 7px 6px; }
+  .card-value { font-size: 30px; }
+}
